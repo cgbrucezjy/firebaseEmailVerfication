@@ -63,6 +63,28 @@ function handleVerifyEmail(auth, actionCode) {
     // again.
   });
 }
+
+function userLogin(){
+  var email=document.getElementById("email").value;
+  var password=document.getElementById("password").value;
+  console.log('submit')
+  firebase.auth().signInWithEmailAndPassword(email, password).then(function(user){
+    console.log('loged in',user.uid);
+    var uid=user.uid;
+    firebase.database().ref('SweetHutUsers/' + uid).update({"/verified/":true});
+
+  }).catch(function(error) {
+    // Handle Errors here.
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    if (errorCode === 'auth/wrong-password') {
+      alert('Wrong password.');
+    } else {
+      alert(errorMessage);
+    }
+    console.log(error);
+  });
+}
 function getParameterByName(name) {
     var url = window.location.href;
     name = name.replace(/[\[\]]/g, "\\$&");
@@ -80,7 +102,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Get the one-time code from the query parameter.
   var actionCode = getParameterByName('oobCode');
   // (Optional) Get the API key from the query parameter.
-  var apiKey = getParameterByName('apiKey');
+  var apiKey = "AIzaSyB8IGqrJGgZK65vbZxUXvd6ya9O1eDO48A" //getParameterByName('apiKey');
 
   // Configure the Firebase SDK.
   // This is the minimum configuration required for the API to be used.
@@ -94,7 +116,15 @@ document.addEventListener('DOMContentLoaded', function() {
   };
   var app = firebase.initializeApp(config);
   var auth = app.auth();
-
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      // User is signed in.
+      console.log("user singed in");
+    } else {
+      // No user is signed in.
+       console.log("user not singed in");
+    }
+  });
   // Handle the user management action.
   switch (mode) {
     case 'resetPassword':

@@ -33,11 +33,18 @@
 	height: auto;
 	color: white;
 	text-align: center;
-	background-color: #999999;
-	margin: 30vh 0 0 0;
+	/*background-color: #999999;*/
+	margin: 20vh 0 0 0;
 	padding: 0;
 	box-sizing: border-box;
 	font-family: "-apple-system", "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
+}
+
+.verifyContainer input {
+	min-width: 220px;
+  min-height: 30px;
+	font-family: "-apple-system", "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
+	margin-bottom: 20px;
 }
 
 button {
@@ -46,7 +53,7 @@ button {
 	border-color: transparent;
 	border-radius: 4px;
 	min-width: 150px;
-    min-height: 50px;
+  min-height: 50px;
 	font-size: 16px;
 	font-family: "-apple-system", "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
 }
@@ -57,18 +64,16 @@ button {
     </div>
     <div class="outerContainer">
 			<div class="verifyContainer">
-				<img src="" title="Sweet Hut logo needs to go here.">
+        <img src="https://wwcdn.weddingwire.com/vendor/765001_770000/765415/thumbnails/220x220_SQ_1432739443535-sweet-hut-logo-circle.jpg" title="Sweet Hut logo." style="mix-blend-mode: multiply; margin-bottom: 20px;">
 				<br>
-				<div>
-					<input id="email" type="email" placeholder="email" />
-					<input id="password" placeholder="password" type="password"/>
-          <button onclick="userLogin()">login</button>
-				</div>
-				<br>
+				<form>
+					<input id="email" type="email" placeholder="Email address" />
+					<br>
+					<input password="password" placeholder="Password" type="password"/>
+					<br>
+				</form>
 				<button onClick="verifyEmail()">Verify Email</button>
-				<h1>We need to set a background image but pretend there is one.</h1>
-				<h1>Also pretend this area's BG isn't gray.</h1>
-				<h1>I can't do that cause idk where this will be hosted.</h1>
+			</div>
 			</div>
 		<div>
   </body>

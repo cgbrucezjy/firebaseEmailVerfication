@@ -55,7 +55,6 @@ function handleVerifyEmail(auth, actionCode) {
     // Email address has been verified.
     document.getElementById("message").innerHTML="email verified! and bruce is awesome";
     console.log(auth);
-    firebase.ref('SweetHutUsers').child(auth.currentUser.uid).update({verified:'true'});
     // TODO: Display a confirmation message to the user.
     // You could also provide the user with a link back to the app.
   }).catch(function(error) {

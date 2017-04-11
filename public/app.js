@@ -71,7 +71,7 @@ function userLogin(){
     console.log('loged in',user.uid);
     var uid=user.uid;
     firebase.database().ref('SweetHutUsers/' + uid).update({"/verified/":true});
-
+    alert('Verified!');
   }).catch(function(error) {
     // Handle Errors here.
     var errorCode = error.code;
